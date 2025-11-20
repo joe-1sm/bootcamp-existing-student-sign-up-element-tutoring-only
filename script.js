@@ -15,25 +15,25 @@
 const PRICING = {
   bootcamp: {
     regular: 3750,
-    discount1SM: 2260,
-    discounted: 1490
+    discount1SM: 1875,
+    discounted: 1875
   },
   weekly: {
     regular: 980,
-    discount1SM: 490,
-    discounted: 490
+    discount1SM: 0,
+    discounted: 980
   }
 };
 
 // Stripe Payment Links Configuration
 const STRIPE_LINKS = {
   bootcampOnly: {
-    oneTime: 'https://buy.stripe.com/9B628q8YUdAH2KBcE1fIB3Y',
-    twoMonths: 'https://buy.stripe.com/dRmfZgfni0NV5WNbzXfIB3Z',
-    threeMonths: 'https://buy.stripe.com/fZueVcfnibsz4SJ7jHfIB44'
+    oneTime: 'https://buy.stripe.com/4gM00igrmfIPdpf8nLfIB47',
+    twoMonths: 'https://buy.stripe.com/bJe14mb72407etjcE1fIC00',
+    threeMonths: 'https://buy.stripe.com/7sY28qfniaov1Gx9rPfIC02'
   },
   bootcampWithWeekly: {
-    oneTime: 'https://buy.stripe.com/eVq4gy0sofIPdpf5bzfIB40',
+    oneTime: 'https://buy.stripe.com/dRm28qgrmbsz2KBbzXfIC03',
     twoMonths: 'https://buy.stripe.com/dRm28q7UQfIPgBrgUhfIB42',
     threeMonths: 'https://buy.stripe.com/cNi5kC2Aw2W3gBrbzXfIB43'
   },
@@ -211,7 +211,7 @@ function updateLineItems() {
   if (state.is1SMStudent === true) {
     lineItemsHTML.push(`
       <div class="line-item discount">
-        <span class="line-item-label">1SM existing student Bootcamp discount (60% Black Friday)</span>
+        <span class="line-item-label">1SM existing student Bootcamp discount (50% Black Friday)</span>
         <span class="line-item-amount">− $${PRICING.bootcamp.discount1SM.toLocaleString()}</span>
       </div>
     `);
@@ -226,8 +226,8 @@ function updateLineItems() {
       </div>
     `);
     
-    // Weekly discount (only if 1SM student AND weekly selected)
-    if (state.is1SMStudent === true) {
+    // Weekly discount (only if 1SM student AND weekly selected AND discount > 0)
+    if (state.is1SMStudent === true && PRICING.weekly.discount1SM > 0) {
       lineItemsHTML.push(`
         <div class="line-item discount">
           <span class="line-item-label">1SM existing student check-in discount (50% Black Friday)</span>
@@ -254,14 +254,14 @@ function updateLineItems() {
       const numInstallments = state.paymentPlan === '2-months' ? 2 : 3;
       const perMonth = Math.round(totalAmount / numInstallments);
       
-      // Format: "$1980 / 3 monthly installments = $660 per month"
+      // Format: "$2855 / 3 monthly installments = $952 per month"
       lineItemsHTML.push(`
         <div class="line-item installment-info">
           <span class="line-item-label">$${totalAmount.toLocaleString()} / ${numInstallments} monthly installments = $${perMonth.toLocaleString()} per month</span>
         </div>
       `);
       
-      // Format: "3 months × $660/month = $1,980"
+      // Format: "3 months × $952/month = $2,855"
       lineItemsHTML.push(`
         <div class="line-item installment-info">
           <span class="line-item-label">${numInstallments} months × $${perMonth.toLocaleString()}/month = $${totalAmount.toLocaleString()}</span>

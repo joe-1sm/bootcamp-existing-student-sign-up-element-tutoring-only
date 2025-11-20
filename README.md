@@ -129,14 +129,14 @@ All pricing is centralized in the `PRICING_CONFIG` object in `script.js`. Update
 
 ### Base Bootcamp Pricing
 - Regular Price: $3,750
-- 1SM Student Price: $1,490 (60% off)
-- Payment options: $1,490 one-time, $745/mo × 2, or $497/mo × 3
+- 1SM Student Price: $1,875 (50% off)
+- Payment options: $1,875 one-time, $938/mo × 2, or $625/mo × 3
 
 ### With Weekly Check-ins
 - Regular Price: $4,730 (bootcamp $3,750 + weekly $980)
-- 1SM Student Price: $1,980 (bootcamp $1,490 + weekly $490)
-- Total Savings: $2,750
-- Payment options: $1,980 one-time, $990/mo × 2, or $660/mo × 3
+- 1SM Student Price: $2,855 (bootcamp $1,875 + weekly $980)
+- Total Savings: $1,875
+- Payment options: $2,855 one-time, $1,428/mo × 2, or $952/mo × 3
 
 ## 🔒 Security
 

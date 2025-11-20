@@ -20,10 +20,10 @@ We want a **private checkout page** (not on the main marketing site) that:
 2. Has a **toggle** to add:
    - **Weekly planning / check‑in sessions with a tutor** (fixed add‑on package)
 3. When the toggle is ON:
-   - All three plans **switch** to “bootcamp + weekly sessions” pricing
-   - Discount messages show **two separate discounts**:
-     - 60% off bootcamp for 1SM students
-     - 50% off weekly sessions for 1SM students
+   - All three plans **switch** to "bootcamp + weekly sessions" pricing
+   - Discount messages show:
+     - 50% off bootcamp for 1SM students
+     - No discount on weekly sessions
    - We also show the **combined total** and **total savings** clearly
 4. Each card has a **Stripe Payment Link** (no Stripe API, just links).
 
@@ -37,30 +37,29 @@ These numbers should be treated as **hard‑coded business rules**.
 
 - Product: **Winter Break MCAT Bootcamp**
 - Regular price: **$3,750**
-- 1SM student discount: marketed as **“60% off”**
-- Discounted price for 1SM students: **$1,490**
+- 1SM student discount: marketed as **"50% off"**
+- Discounted price for 1SM students: **$1,875**
 - Offer window: **Black Friday discount until December 1, 11:59 p.m. Pacific**
 
 Payment variants (bootcamp only):
 
 1. **One‑time payment**
-   - Student pays: **$1,490 once**
+   - Student pays: **$1,875 once**
    - Button text (suggested):  
-     `One-time payment – $1,490`
+     `One-time payment – $1,875`
    - Stripe link: `BOOTCAMP_ONLY_ONETIME` (placeholder; replace with real URL)
 
 2. **Two monthly installments**
-   - Student pays: **$745 / month** for **2 months**
+   - Student pays: **$938 / month** for **2 months**
    - Button text:  
-     `2 monthly payments – $745/month`
+     `2 monthly payments – $938/month`
    - Stripe link: `BOOTCAMP_ONLY_2MO`
 
 3. **Three monthly installments**
-   - Student pays: **$497 / month** for **3 months**
+   - Student pays: **$625 / month** for **3 months**
    - Button text:  
-     `3 monthly payments – $497/month`
+     `3 monthly payments – $625/month`
    - Stripe link: `BOOTCAMP_ONLY_3MO`
-   - Note: 3 × 497 = 1,491 (small $1 difference vs 1,490 is acceptable; we stick to the given 497/month).
 
 ### 1.2 Bootcamp + weekly tutor sessions (add‑on ON)
 
@@ -68,52 +67,52 @@ Add‑on component:
 
 - Product: **Weekly planning / check‑in sessions with a tutor**
 - Regular price: **$980**
-- 1SM discount: **50% off** → **$490** extra when purchased with bootcamp.
+- 1SM discount: **No discount** → **$980** extra when purchased with bootcamp.
 
 Combined package:
 
-- Bootcamp discounted: **$1,490**
-- Weekly sessions discounted: **$490**
+- Bootcamp discounted: **$1,875**
+- Weekly sessions: **$980** (no discount)
 - **Total student price**:  
-  $1,490 + $490 = **$1,980**
+  $1,875 + $980 = **$2,855**
 - Combined regular price:  
   $3,750 + $980 = **$4,730**
 - **Total savings for 1SM students**:  
-  $4,730 – $1,980 = **$2,750**
+  $4,730 – $2,855 = **$1,875**
 
 Payment variants (bootcamp + weekly sessions):
 
 1. **One‑time payment**
-   - Student pays: **$1,980 once**
+   - Student pays: **$2,855 once**
    - Button text:  
-     `One-time payment – $1,980`
+     `One-time payment – $2,855`
    - Show breakdown:
-     - Bootcamp: `$3,750 → $1,490 (60% off for 1SM students)`
-     - Weekly check‑ins: `$980 → $490 (50% off for 1SM students)`
-     - Combined: `$4,730 → $1,980 (you save $2,750)`
+     - Bootcamp: `$3,750 → $1,875 (50% off for 1SM students)`
+     - Weekly check‑ins: `$980` (no discount)
+     - Combined: `$4,730 → $2,855 (you save $1,875)`
    - Stripe link: `BOOTCAMP_PLUS_WEEKLY_ONETIME`
 
 2. **Two monthly installments**
-   - Student pays: **$990 / month** for **2 months**  
-     (2 × 990 = 1,980)
+   - Student pays: **$1,428 / month** for **2 months**  
+     (2 × 1,428 = 2,856)
    - Button text:  
-     `2 monthly payments – $990/month`
+     `2 monthly payments – $1,428/month`
    - Same breakdown text as one‑time card.
    - Stripe link: `BOOTCAMP_PLUS_WEEKLY_2MO`
 
 3. **Three monthly installments**
-   - Student pays: **$660 / month** for **3 months**  
-     (3 × 660 = 1,980)
+   - Student pays: **$952 / month** for **3 months**  
+     (3 × 952 = 2,856)
    - Button text:  
-     `3 monthly payments – $660/month`
+     `3 monthly payments – $952/month`
    - Same breakdown text.
    - Stripe link: `BOOTCAMP_PLUS_WEEKLY_3MO`
 
-**Requirement:** For the “bootcamp + weekly” state, always show:
+**Requirement:** For the "bootcamp + weekly" state, always show:
 
-- Bootcamp discount (60% off, 3,750 → 1,490)
-- Weekly add‑on discount (50% off, 980 → 490)
-- Combined original vs combined discounted (4,730 → 1,980, save 2,750)
+- Bootcamp discount (50% off, 3,750 → 1,875)
+- Weekly add‑on (no discount, 980 → 980)
+- Combined original vs combined discounted (4,730 → 2,855, save 1,875)
 
 ---
 
@@ -168,26 +167,26 @@ Each plan card includes:
 - **Discount area**
   - Bootcamp‑only state:
     - Original price text with strikethrough: `Normally $3,750`
-    - Badge/pill: `≈60% off for 1SM students`
+    - Badge/pill: `≈50% off for 1SM students`
   - Combined state:
-    - Line 1: `Bootcamp: $3,750 → $1,490 (60% off for 1SM students)`
-    - Line 2: `Weekly check-ins: $980 → $490 (50% off for 1SM students)`
+    - Line 1: `Bootcamp: $3,750 → $1,875 (50% off for 1SM students)`
+    - Line 2: `Weekly check-ins: $980 (no discount)`
     - Line 3 (savings summary):  
-      `Total value $4,730 → $1,980 — you save $2,750`
+      `Total value $4,730 → $2,855 — you save $1,875`
 
 - **Price area**
   - Main price text (large, prominent)
   - Subtext that clarifies schedule
 
   Bootcamp only:
-  - Card 1: `$1,490` / `One-time payment`
-  - Card 2: `$745/month` / `2 monthly payments (total $1,490)`
-  - Card 3: `$497/month` / `3 monthly payments`
+  - Card 1: `$1,875` / `One-time payment`
+  - Card 2: `$938/month` / `2 monthly payments (total $1,875)`
+  - Card 3: `$625/month` / `3 monthly payments`
 
   Bootcamp + weekly:
-  - Card 1: `$1,980` / `One-time payment`
-  - Card 2: `$990/month` / `2 monthly payments (total $1,980)`
-  - Card 3: `$660/month` / `3 monthly payments (total $1,980)`
+  - Card 1: `$2,855` / `One-time payment`
+  - Card 2: `$1,428/month` / `2 monthly payments (total $2,855)`
+  - Card 3: `$952/month` / `3 monthly payments (total $2,855)`
 
 - **Feature list**
   - Same (or almost same) features across cards, varying only by whether weekly sessions are included.
@@ -201,9 +200,9 @@ Each plan card includes:
 
 - **Primary CTA button**
   - Text includes payment structure, e.g.:
-    - `One-time payment – $1,490`
-    - `2 monthly payments – $745/month`
-    - `3 monthly payments – $497/month`
+    - `One-time payment – $1,875`
+    - `2 monthly payments – $938/month`
+    - `3 monthly payments – $625/month`
   - `href` = Stripe payment link for this plan in current state.
   - `target="_blank"`, `rel="noopener noreferrer"`.
 
@@ -258,28 +257,28 @@ const PRICING_CONFIG = {
     productLabel: 'Winter Break MCAT Bootcamp (1SM student discount)',
     discounts: [
       'Normally $3,750',
-      '≈60% off for 1SM students'
+      '≈50% off for 1SM students'
     ],
     plans: {
       oneTime: {
         title: 'One-time payment',
-        mainPrice: '$1,490',
+        mainPrice: '$1,875',
         subPrice: 'Pay in full today',
-        ctaLabel: 'One-time payment – $1,490',
+        ctaLabel: 'One-time payment – $1,875',
         stripeUrl: 'https://stripe.link/BOOTCAMP_ONLY_ONETIME'
       },
       twoMonths: {
         title: '2 monthly installments',
-        mainPrice: '$745/month',
-        subPrice: '2 monthly payments (total $1,490)',
-        ctaLabel: '2 monthly payments – $745/month',
+        mainPrice: '$938/month',
+        subPrice: '2 monthly payments (total $1,875)',
+        ctaLabel: '2 monthly payments – $938/month',
         stripeUrl: 'https://stripe.link/BOOTCAMP_ONLY_2MO'
       },
       threeMonths: {
         title: '3 monthly installments',
-        mainPrice: '$497/month',
+        mainPrice: '$625/month',
         subPrice: '3 monthly payments',
-        ctaLabel: '3 monthly payments – $497/month',
+        ctaLabel: '3 monthly payments – $625/month',
         stripeUrl: 'https://stripe.link/BOOTCAMP_ONLY_3MO'
       }
     }
@@ -288,30 +287,30 @@ const PRICING_CONFIG = {
     productLabel:
       'Winter Break MCAT Bootcamp + weekly tutor planning/check-in sessions (1SM student pricing)',
     discounts: [
-      'Bootcamp: $3,750 → $1,490 (60% off for 1SM students)',
-      'Weekly check-ins: $980 → $490 (50% off for 1SM students)',
-      'Total value $4,730 → $1,980 — you save $2,750'
+      'Bootcamp: $3,750 → $1,875 (50% off for 1SM students)',
+      'Weekly check-ins: $980 (no discount)',
+      'Total value $4,730 → $2,855 — you save $1,875'
     ],
     plans: {
       oneTime: {
         title: 'One-time payment',
-        mainPrice: '$1,980',
+        mainPrice: '$2,855',
         subPrice: 'Pay in full today',
-        ctaLabel: 'One-time payment – $1,980',
+        ctaLabel: 'One-time payment – $2,855',
         stripeUrl: 'https://stripe.link/BOOTCAMP_PLUS_WEEKLY_ONETIME'
       },
       twoMonths: {
         title: '2 monthly installments',
-        mainPrice: '$990/month',
-        subPrice: '2 monthly payments (total $1,980)',
-        ctaLabel: '2 monthly payments – $990/month',
+        mainPrice: '$1,428/month',
+        subPrice: '2 monthly payments (total $2,855)',
+        ctaLabel: '2 monthly payments – $1,428/month',
         stripeUrl: 'https://stripe.link/BOOTCAMP_PLUS_WEEKLY_2MO'
       },
       threeMonths: {
         title: '3 monthly installments',
-        mainPrice: '$660/month',
-        subPrice: '3 monthly payments (total $1,980)',
-        ctaLabel: '3 monthly payments – $660/month',
+        mainPrice: '$952/month',
+        subPrice: '3 monthly payments (total $2,855)',
+        ctaLabel: '3 monthly payments – $952/month',
         stripeUrl: 'https://stripe.link/BOOTCAMP_PLUS_WEEKLY_3MO'
       }
     }
