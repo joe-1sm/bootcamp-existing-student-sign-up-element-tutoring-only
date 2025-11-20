@@ -68,7 +68,7 @@ body {
     color: var(--gray-900);
     line-height: 1.6;
     min-height: 100vh;
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-3xl) var(--spacing-md) var(--spacing-xl) var(--spacing-md);
 }
 
 /* Container */
