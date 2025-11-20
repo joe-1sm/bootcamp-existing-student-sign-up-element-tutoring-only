@@ -34,8 +34,8 @@ const STRIPE_LINKS = {
   },
   bootcampWithWeekly: {
     oneTime: 'https://buy.stripe.com/dRm28qgrmbsz2KBbzXfIC03',
-    twoMonths: 'https://buy.stripe.com/dRm28q7UQfIPgBrgUhfIB42',
-    threeMonths: 'https://buy.stripe.com/cNi5kC2Aw2W3gBrbzXfIB43'
+    twoMonths: 'https://buy.stripe.com/7sY7sK0so54bbh7dI5fIC04',
+    threeMonths: 'https://buy.stripe.com/28EbJ08YU8gngBrbzXfIC05'
   },
   bootcampOnlyNon1SM: {
     oneTime: 'https://1sourcemedicine.com/mcat-bootcamp/#pricing-section',
