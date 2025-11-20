@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Break MCAT Bootcamp — 1SM Student Pricing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="page-header">
+            <h1 class="main-title">Winter Break MCAT Bootcamp — 1SM Student Pricing</h1>
+            <p class="subtitle">Exclusive Black Friday pricing for current 1SM students through Dec 1, 11:59 p.m. Pacific Time.</p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-container" id="countdown-container">
+                <div class="countdown-label">Offer ends in:</div>
+                <div class="countdown-timer">
+                    <div class="countdown-segment">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-unit">days</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-segment">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-unit">hours</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-segment">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-unit">min</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-segment">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-unit">sec</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-segment">
+                        <span class="countdown-value countdown-ms" id="milliseconds">000</span>
+                        <span class="countdown-unit">ms</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Program Highlights (moved above) -->
+        <section class="program-highlights">
+            <h3>What's Included:</h3>
+            <ul>
+                <li>AAMC-centered curriculum</li>
+                <li>22+ hours of live instruction per week</li>
+                <li>Clarity and accountability every hour of your day</li>
+                <li>5-week program designed for January & February test dates</li>
+            </ul>
+        </section>
+
+        <!-- Interactive Pricing Calculator (Split Layout) -->
+        <section class="pricing-calculator">
+            <h2 class="calculator-heading">Choose Your Winter Break Bootcamp Approach</h2>
+            
+            <div class="calculator-split">
+                <!-- Left Column: Questions (2/3 width) -->
+                <div class="questions-column">
+            
+                    <!-- Question 1: Are you a 1SM student? -->
+                    <div class="question-group">
+                        <label class="question-label">Are you a current MCAT student with 1SM?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="is-1sm-student" value="yes">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Yes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="is-1sm-student" value="no">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 2: Add weekly check-ins? (appears after Q1) -->
+                    <div class="question-group" id="question-2" style="display: none;">
+                        <label class="question-label">Would you like to add weekly check-ins to monitor your progress, refine your strategies, and adapt your study plan?</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="add-weekly" value="yes">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">Yes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="add-weekly" value="no">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Question 3: Payment plan (appears after Q2) -->
+                    <div class="question-group" id="question-3" style="display: none;">
+                        <label class="question-label">Would you like to sign up in monthly installments?</label>
+                        <div class="radio-group radio-group-vertical">
+                            <label class="radio-option">
+                                <input type="radio" name="payment-plan" value="one-time">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">One-time payment</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="payment-plan" value="2-months">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">2 monthly installments</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="payment-plan" value="3-months">
+                                <span class="radio-custom"></span>
+                                <span class="radio-text">3 monthly installments</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Cost Breakdown (1/3 width) -->
+                <div class="cost-column">
+                    <!-- Line Items Header and List -->
+                    <div class="line-items-header">Itemized cost breakdown:</div>
+                    <div class="line-items" id="line-items">
+                        <div class="line-item">
+                            <span class="line-item-label">1SM Winter Break MCAT Bootcamp</span>
+                            <span class="line-item-amount">+ $3,750</span>
+                        </div>
+                    </div>
+
+                    <!-- Amount Due (visible from start) -->
+                    <div class="amount-due" id="amount-due">
+                        <span class="due-label">Amount due at checkout:</span>
+                        <span class="due-amount" id="due-amount-display">
+                            <span class="original-amount" id="original-amount"></span>
+                            <span class="discounted-amount" id="discounted-amount"></span>
+                        </span>
+                    </div>
+
+                    <!-- Proceed to Checkout Button -->
+                    <div class="checkout-section">
+                        <button class="checkout-button" id="checkout-button" disabled>
+                            Proceed to Checkout
+                        </button>
+                        <p class="installment-agreement" id="installment-agreement" style="display: none;">
+                            <!-- Agreement text will be inserted here -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / Fine Print -->
+        <footer class="page-footer">
+            <p>This exclusive offer is valid through December 1, 2025 at 11:59 p.m. Pacific Time and is available only to current 1SM students.</p>
+            <p>All payments are processed securely through Stripe. By completing your purchase, you agree to our <a href="https://1sourcemedicine.com/terms-and-conditions/" target="_blank" rel="noopener noreferrer">terms of service</a>.</p>
+            <p class="footer-note">Questions? Contact us at mcat@1sourcemedicine.com or 1-888-963-MCAT</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
